@@ -1,0 +1,22 @@
+player
+  sprite
+  image file
+  hp
+  x,y
+  move()
+  collide()
+  shoot()?
+
+particles
+  pos: [x,y]
+  direction: [x,y]
+  speed
+  hp 
+
+particle stream
+  particles[]
+  pos: [x,y]
+  direction: [x,y]
+  max_particles: int
+
+  
