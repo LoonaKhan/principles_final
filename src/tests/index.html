@@ -6,16 +6,23 @@
     <h1>Hello PixiJS</h1>
     <script src="https://pixijs.download/release/pixi.js"></script> <!-- loads pixiJS-->
 
-    <!-- our app-->
-    <!-- atm, doesnt work if i put the script in a seperate file. idk y-->
-    <script>
-        //import * as PIXI from 'pixi.js'
+    <!-- classes-->
+    <script src="../models/Player.js"></script>
+    <script src="../models/Particle.js"></script>
+    <script src="../models/Stream.js"></script>
 
+    <!-- our app-->
+    <script>
         // creates and displays our pixi app
         let app = new PIXI.Application({width: 640, height: 360})
         document.body.appendChild(app.view)
 
-        // load a sprite. asynchronously
+        let plr = new Player("1.png")
+        app.stage.addChild(plr.sprite)
+
+        let ptl = new Particle("1.png", [50, 100], Math.PI/2, 0.1, 0.01)
+        app.stage.addChild(ptl.sprite)
+
         let sprite = PIXI.Sprite.from("1.png")
         sprite.x = 50
         sprite.y = 50
@@ -26,7 +33,11 @@
         // run a callback to make a callback every frame and add the time that has elapsed
         app.ticker.add((delta) => {
             elapsed += delta
+
+            // our move() functions
             sprite.x = 100.0 + Math.cos(elapsed/50) * 100
+            plr.sprite.x = 120.0 + Math.cos(elapsed/50) * 100
+            ptl.move()
         })
 
     </script>
